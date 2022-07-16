@@ -16,6 +16,10 @@ public class Dice : MonoBehaviour {
     public bool fromMerge;
     private MergeManager _mergeManager;
     public int finalSide = 0;
+
+    private bool isOverDie;
+
+    private GameObject currentlyCol;
 	// Use this for initialization
 	private void Start ()
     {
@@ -23,7 +27,7 @@ public class Dice : MonoBehaviour {
         _mergeManager = FindObjectOfType<MergeManager>();
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
-        print($" {diceSides[0].value} ");
+        //print($" {diceSides[0].value} ");
         
         Roll();
     }
@@ -65,20 +69,65 @@ public class Dice : MonoBehaviour {
     }
 
 
-    private void OnTriggerEnter2D(Collider2D col)
+   
+    
+    
+    private void OnMouseUp()
     {
-        if (col.gameObject.CompareTag("Dice"))
+        //Released?.Invoke();
+        print("Dropped");
+        GetComponent<Dragable>().isHeld = false;
+        if (isOverDie)
         {
             print("Still Working");
-            bool merged = _mergeManager.MergeNumbers(finalSide, col.GetComponent<Dice>().finalSide);
+            bool merged = _mergeManager.MergeNumbers(finalSide, currentlyCol.GetComponent<Dice>().finalSide);
             print($"Merged = {merged}");
             if (merged)
             {
                 //Play animation
-                Destroy(col.gameObject,1);
+                Destroy(currentlyCol.gameObject,1);
                 Destroy(this.gameObject,1);
             }
         }
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Dice"))
+        {
+            isOverDie = true;
+            if (GetComponent<Dragable>().isHeld)
+            {
+                currentlyCol = col.gameObject;
+                // Display that you can intersect/merge into something!
+                Debug.Log("YOucan merge!");
+            }
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        isOverDie = false;
+    }
 }
-}
+
+
+
+//---------------------------------------------------------------------------------------------
+// private IEnumerator OnTriggerEnter2D(Collider2D col)
+// {
+//     if (col.gameObject.CompareTag("Dice"))
+//     {
+//         yield return new WaitForSeconds(2f);
+//         
+//         print("Still Working");
+//         bool merged = _mergeManager.MergeNumbers(finalSide, col.GetComponent<Dice>().finalSide);
+//         print($"Merged = {merged}");
+//         if (merged)
+//         {
+//             //Play animation
+//             Destroy(col.gameObject,1);
+//             Destroy(this.gameObject,1);
+//         }
+//     }

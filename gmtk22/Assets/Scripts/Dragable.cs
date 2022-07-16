@@ -12,7 +12,7 @@ public class Dragable : MonoBehaviour
    private Vector3 spriteStart;
    public bool isHeld = false;
 
-   //private bool isOverDie = false;
+   private bool isOverDie = false;
    //public event Action Released;
    
 
@@ -39,7 +39,26 @@ public class Dragable : MonoBehaviour
       //Released?.Invoke();
      // print("Dropped");
       isHeld = false;
-     
+      if (isOverDie)
+      {
+         // Do merge thing!
+         Debug.Log("MERGE!");
+      }
    }
 
+   private void OnTriggerEnter2D(Collider2D col)
+   {
+      isOverDie = true;
+      if (isHeld)
+      {
+         // Display that you can intersect/merge into something!
+         Debug.Log("YOucan merge!");
+      }
+
+   }
+
+   private void OnTriggerExit2D(Collider2D other)
+   {
+      isOverDie = false;
+   }
 }

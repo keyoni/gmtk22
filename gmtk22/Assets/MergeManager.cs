@@ -25,7 +25,7 @@ public class MergeManager : MonoBehaviour
         foreach (var dice in diceFaces)
         {
             mergeValues.Add(dice.mergeNum,dice);
-            print($"Die - {dice.value}, {mergeValues[dice.mergeNum]}");
+            //print($"Die - {dice.value}, {mergeValues[dice.mergeNum]}");
         }
        
       
