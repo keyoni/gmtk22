@@ -13,9 +13,14 @@ public class Dice : MonoBehaviour {
     // Reference to sprite renderer to change sprites
     private SpriteRenderer rend;
 
+    public bool fromMerge;
+    private MergeManager _mergeManager;
+    public int finalSide = 0;
 	// Use this for initialization
-	private void Start () {
-
+	private void Start ()
+    {
+    print(fromMerge);
+        _mergeManager = FindObjectOfType<MergeManager>();
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
         print($" {diceSides[0].value} ");
@@ -34,10 +39,8 @@ public class Dice : MonoBehaviour {
     {
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
-        int randomDiceSide = 0;
-
-        // Final side or value that dice reads in the end of coroutine
-        String finalSide = "";
+        var randomDiceSide = 0;
+        
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -55,9 +58,27 @@ public class Dice : MonoBehaviour {
 
         // Assigning final side so you can use this value later in your game
         // for player movement for example
-        finalSide = diceSides[randomDiceSide].value;
+        finalSide = diceSides[randomDiceSide].numValue;
 
         // Show final dice value in Console
         Debug.Log(finalSide);
     }
+
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Dice"))
+        {
+            print("Still Working");
+            bool merged = _mergeManager.MergeNumbers(finalSide, col.GetComponent<Dice>().finalSide);
+            print($"Merged = {merged}");
+            if (merged)
+            {
+                //Play animation
+                Destroy(col.gameObject,1);
+                Destroy(this.gameObject,1);
+            }
+        }
+        
+}
 }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceSprite: {fileID: 21300000, guid: 27685f6eae427e74c9446293eca39bbe, type: 3}
   value: 4
+  numValue: 4
+  mergeNum: 4

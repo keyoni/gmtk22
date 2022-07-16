@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8827724211592344589}
   - component: {fileID: 8827724211592344585}
   - component: {fileID: 8827724211592344582}
+  - component: {fileID: 6471564334944698367}
   m_Layer: 0
   m_Name: Standard Die
   m_TagString: Dice
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8827724211592344591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13048756, y: -0.9768314, z: -0.2129755}
+  m_LocalPosition: {x: 0.13048756, y: -0.9768314, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 32f25f6d110626f4d85d6532355c6b93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,6 +107,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ecc5fdfc2c46b04e8ee6ab44b8f9dc8, type: 2}
   - {fileID: 11400000, guid: 74fbaf4f2826cc14788b2bc5182723dc, type: 2}
   - {fileID: 11400000, guid: d9d040916fc57944d8b71ce60c63db8f, type: 2}
+  finalSide: 0
 --- !u!114 &8827724211592344585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +147,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.580211, y: 3.6609583}
   m_EdgeRadius: 0
+--- !u!50 &6471564334944698367
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827724211592344591}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

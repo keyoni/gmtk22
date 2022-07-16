@@ -9,7 +9,7 @@ public class RollButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        table = GetComponentInParent<RollingTable>();
+        table = FindObjectOfType<RollingTable>();
     }
 
     private void OnMouseDown()
@@ -17,9 +17,5 @@ public class RollButton : MonoBehaviour
         print("Rolling!");
         table.RollDice();
     }
-
-    private void OnMouseOver()
-    {
-        print("uh oh, are you going to click me??");
-    }
+    
 }

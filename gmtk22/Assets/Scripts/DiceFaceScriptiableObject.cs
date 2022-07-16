@@ -8,5 +8,6 @@ public class DiceFaceScriptiableObject : ScriptableObject
 {
   public Sprite faceSprite;
   public String value;
-
+  public int numValue;
+  public int mergeNum;
 }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceSprite: {fileID: 21300000, guid: 3e8ec78e069d2324fb3aa4d2490063d2, type: 3}
   value: Yellow
+  numValue: 13
+  mergeNum: 29

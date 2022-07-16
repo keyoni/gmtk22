@@ -12,7 +12,7 @@ public class Dragable : MonoBehaviour
    private Vector3 spriteStart;
    public bool isHeld = false;
 
-   private bool isOverDie = false;
+   //private bool isOverDie = false;
    //public event Action Released;
    
 
