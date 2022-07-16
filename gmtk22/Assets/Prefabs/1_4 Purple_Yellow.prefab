@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &797700787760595440
 SpriteRenderer:
@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ecc5fdfc2c46b04e8ee6ab44b8f9dc8, type: 2}
   - {fileID: 11400000, guid: e28dc0ed43c18db4e92bc78e5d3d92ca, type: 2}
   - {fileID: 11400000, guid: de7f48dffa1a6604ebf520b040a7a4f9, type: 2}
+  fromMerge: 0
   finalSide: 0
 --- !u!114 &797700787760595443
 MonoBehaviour:
@@ -134,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12274873, y: 0.030231476}
+  m_Offset: {x: -0.080397606, y: -0.17799544}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -145,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.580211, y: 3.6609583}
+  m_Size: {x: 1.8155746, y: 2.0727859}
   m_EdgeRadius: 0
 --- !u!50 &9193734692267129835
 Rigidbody2D:

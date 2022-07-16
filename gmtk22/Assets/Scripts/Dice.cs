@@ -67,40 +67,25 @@ public class Dice : MonoBehaviour {
         // Show final dice value in Console
         Debug.Log(finalSide);
     }
-
-
-   
     
-    
-    private void OnMouseUp()
-    {
-        //Released?.Invoke();
-        print("Dropped");
-        GetComponent<Dragable>().isHeld = false;
-        if (isOverDie)
-        {
-            print("Still Working");
-            bool merged = _mergeManager.MergeNumbers(finalSide, currentlyCol.GetComponent<Dice>().finalSide);
-            print($"Merged = {merged}");
-            if (merged)
-            {
-                //Play animation
-                Destroy(currentlyCol.gameObject,1);
-                Destroy(this.gameObject,1);
-            }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
+    IEnumerator  OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Dice"))
         {
             isOverDie = true;
-            if (GetComponent<Dragable>().isHeld)
+            //Particles happen here
+            yield return new WaitForSeconds(2f);
+            if (isOverDie)
             {
-                currentlyCol = col.gameObject;
-                // Display that you can intersect/merge into something!
-                Debug.Log("YOucan merge!");
+                print("Still Working");
+                bool merged = _mergeManager.MergeNumbers(finalSide, col.GetComponent<Dice>().finalSide);
+                print($"Merged = {merged}");
+                if (merged)
+                {
+                    //Play animation
+                    Destroy(col.gameObject, 1);
+                    Destroy(this.gameObject, 1);
+                }
             }
         }
 
@@ -108,6 +93,7 @@ public class Dice : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        //Particles Disappears here
         isOverDie = false;
     }
 }
