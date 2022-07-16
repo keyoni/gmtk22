@@ -36,29 +36,7 @@ public class Dragable : MonoBehaviour
 
    private void OnMouseUp()
    {
-      //Released?.Invoke();
-     // print("Dropped");
       isHeld = false;
-      if (isOverDie)
-      {
-         // Do merge thing!
-         Debug.Log("MERGE!");
-      }
-   }
-
-   private void OnTriggerEnter2D(Collider2D col)
-   {
-      isOverDie = true;
-      if (isHeld)
-      {
-         // Display that you can intersect/merge into something!
-         Debug.Log("YOucan merge!");
-      }
-
-   }
-
-   private void OnTriggerExit2D(Collider2D other)
-   {
-      isOverDie = false;
+     
    }
 }

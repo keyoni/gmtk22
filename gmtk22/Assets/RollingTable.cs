@@ -21,11 +21,6 @@ public class RollingTable : MonoBehaviour
             die.GetComponent<Dice>().Roll();
         }
     }
-    // private void OnMouseDown()
-    // {
-    //     print("Rolling!");
-    //     RollDice();
-    // }
     private void OnTriggerEnter2D(Collider2D col)
     {
         print($" Entering {col.gameObject.name}");

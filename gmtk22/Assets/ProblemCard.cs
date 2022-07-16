@@ -39,15 +39,7 @@ public class ProblemCard : MonoBehaviour
         print("winning val" + winningValue);
         print($"currentVal" + currentValue);
     }
-
-    private void OnMouseDown()
-    {
-        foreach (Dice die in children)
-        {
-            print($"Problem Card: {die.finalSide}");
-        }
-
-    }
+    
 
     private void OnTriggerEnter2D(Collider2D col)
     {
