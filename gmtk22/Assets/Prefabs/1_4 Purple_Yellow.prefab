@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 797700787760595452}
   m_Layer: 0
   m_Name: 1_4 Purple_Yellow
-  m_TagString: Untagged
+  m_TagString: Dice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Dice : MonoBehaviour {
 
     // Array of dice sides sprites to load from Resources folder
-    [SerializeField] DiceFaceScriptiableObject[] diceSides;
+    [SerializeField] public List<DiceFaceScriptiableObject> diceSides;
     
 
     // Reference to sprite renderer to change sprites
@@ -18,10 +19,12 @@ public class Dice : MonoBehaviour {
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
         print($" {diceSides[0].value} ");
+        
+        Roll();
     }
-	
+    
     // If you left click over the dice then RollTheDice coroutine is started
-    private void OnMouseDown()
+    public void Roll()
     {
         StartCoroutine("RollTheDice");
     }
@@ -41,7 +44,7 @@ public class Dice : MonoBehaviour {
         for (int i = 0; i <= 20; i++)
         {
             // Pick up random value from 0 to 5 (All inclusive)
-            randomDiceSide = Random.Range(0, 6);
+            randomDiceSide = Random.Range(0, diceSides.Count);
 
             // Set sprite to upper face of dice from array according to random value
             rend.sprite = diceSides[randomDiceSide].faceSprite;
