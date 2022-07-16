@@ -7,11 +7,12 @@ public class ProblemCard : MonoBehaviour
 {
 
     private List<Dice> children;
-    private int winningValue;
+    [SerializeField]  private int winningValue;
     private int currentValue;
-    private int winningNumber;
-    private int currentNumber;
+    [SerializeField] private int winningNumber;
+    [SerializeField] private int currentNumber;
 
+    public static event Action ProblemSolved;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class ProblemCard : MonoBehaviour
 
     private IEnumerator GetNewValue()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         foreach (Dice die in children)
         {
             winningValue += die.finalSide;
@@ -81,11 +82,12 @@ public class ProblemCard : MonoBehaviour
             if (winningValue == currentValue)
             {
                 print("WINNER!!!");
-                
+                ProblemSolved?.Invoke();
                 GetNewProblemCard();
             }
         }
-        else GetComponent<SpriteRenderer>().color = Color.red;
+        else  if(currentNumber> winningNumber)
+            GetComponent<SpriteRenderer>().color = Color.red;
         
     }
 
