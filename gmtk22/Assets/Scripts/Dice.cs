@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Dice : MonoBehaviour {
+public class Dice : MonoBehaviour
+{
 
     // Array of dice sides sprites to load from Resources folder
     [SerializeField] public List<DiceFaceScriptiableObject> diceSides;
-    
+
 
     // Reference to sprite renderer to change sprites
     private SpriteRenderer rend;
@@ -23,11 +24,16 @@ public class Dice : MonoBehaviour {
     private GameObject currentlyCol;
 
     [SerializeField] private GameObject locked;
-	// Use this for initialization
-	private void Start ()
+
+    private AudioManager _audioManager;
+
+    // Use this for initialization
+    private void Start()
     {
-   // print(fromMerge);
+        // print(fromMerge);
         _mergeManager = FindObjectOfType<MergeManager>();
+        _audioManager = FindObjectOfType<AudioManager>();
+        print(_audioManager);
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
         //print($" {diceSides[0].value} ");
@@ -35,25 +41,24 @@ public class Dice : MonoBehaviour {
         {
             locked.SetActive(true);
         }
-        else
-        {
-            Roll();
-        }
-        
+
+        Roll();
+
+
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(1) && mouseHover)
         {
-             Roll();
+            Roll();
         }
     }
 
     // If you left click over the dice then RollTheDice coroutine is started
     public void Roll()
     {
-       StartCoroutine("RollTheDice");
+        StartCoroutine("RollTheDice");
     }
 
     private void OnMouseEnter()
@@ -72,7 +77,11 @@ public class Dice : MonoBehaviour {
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         var randomDiceSide = 0;
-        
+        //
+        if (CompareTag("Dice"))
+        {
+           _audioManager.PlayDieShuffle();
+        }
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -93,31 +102,34 @@ public class Dice : MonoBehaviour {
         finalSide = diceSides[randomDiceSide].numValue;
 
         // Show final dice value in Console
-    //    Debug.Log(finalSide);
+        //    Debug.Log(finalSide);
     }
-    
-    IEnumerator  OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Dice"))
-        {
-            isOverDie = true;
-            //Particles happen here
-            yield return new WaitForSeconds(1f);
-            if (isOverDie)
-            {
-                //print("Still Working");
-               _mergeManager.MergeNumbers(gameObject, col.gameObject, this.transform);
-                //print($"Merged = {merged}");
-                // if (merged)
-                // {
-                //     //Play animation
-                //     Destroy(col.gameObject);
-                //     Destroy(this.gameObject);
-                // }
-            }
-        }
 
+    IEnumerator OnTriggerEnter2D(Collider2D col)
+    {
+        if (!fromMerge){
+            if (col.gameObject.CompareTag("Dice"))
+            {
+                isOverDie = true;
+                //Particles happen here
+                yield return new WaitForSeconds(1f);
+                if (isOverDie)
+                {
+                    //print("Still Working");
+                    _mergeManager.MergeNumbers(gameObject, col.gameObject, this.transform);
+                    //print($"Merged = {merged}");
+                    // if (merged)
+                    // {
+                    //     Play animation
+                    //     Destroy(col.gameObject);
+                    //     Destroy(this.gameObject);
+                    // }
+                }
+            }
     }
+}
+
+
 
     private void OnTriggerExit2D(Collider2D other)
     {

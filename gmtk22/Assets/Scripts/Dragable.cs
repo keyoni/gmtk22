@@ -15,14 +15,16 @@ public class Dragable : MonoBehaviour
    //private bool isOverDie = false;
    //public event Action Released;
    
+   private AudioManager _audioManager;
 
    private void OnMouseDown()
    {
+      _audioManager = FindObjectOfType<AudioManager>();
       //print("ONMOUSEDOWN!!!!!");
       isHeld = true;
       mouseStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       spriteStart = this.transform.localPosition ;
-      
+      _audioManager.PlayDieGrab();
         
       }
    
@@ -38,6 +40,7 @@ public class Dragable : MonoBehaviour
 
    private void OnMouseUp()
    {
+      _audioManager.PlayDieThrow();
       isHeld = false;
      
    }
