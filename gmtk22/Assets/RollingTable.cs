@@ -25,6 +25,7 @@ public class RollingTable : MonoBehaviour
     {
         print($" Entering {col.gameObject.name}");
                 diceOnTable.Add(col.gameObject);
+        print($" List size {diceOnTable.Count}");
     }
 
     private void OnTriggerExit2D(Collider2D other)
