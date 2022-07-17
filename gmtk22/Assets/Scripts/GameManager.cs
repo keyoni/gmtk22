@@ -13,19 +13,22 @@ public class GameManager : MonoBehaviour
     public TMP_Text timer;
     public TMP_Text scoreText;
     public int score;
+    [SerializeField] private Camera cam;
+    [SerializeField] private GameObject dicePrefab;
     private void Start()
     {
         ProblemCard.ProblemSolved += Score;
+        ProblemCard.ProblemSolved += ResetDie;
+        
     }
     
     void Update()
     {
-
         UpdateTimer();
-
     }
     private void UpdateTimer()
     {
+        //Timer
         _countUpAccumulated += Time.deltaTime;
         
         if (_countUpAccumulated > 0.01f)
@@ -34,14 +37,30 @@ public class GameManager : MonoBehaviour
             timer.text = timeUp.ToString("00");
             _countUpAccumulated = 0f;
         }
-      
+        
+        
     }
 
     private void Score()
     {
-        score = (int) timeUp;
+        score += (int) timeUp;
+        scoreText.text = score.ToString("00");
         print($"Score: {score}");
         timeUp = 0;
+    }
+
+    private void ResetDie()
+    {
+        var dice = FindObjectsOfType<Dice>();
+        foreach (var die in dice)
+        {
+            if (die.gameObject.CompareTag("Dice"))
+            {
+                Destroy(die.gameObject);
+            }
+
+        } 
+        Instantiate(dicePrefab);
     }
 }
 

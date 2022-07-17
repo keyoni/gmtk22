@@ -14,7 +14,7 @@ public class RollButton : MonoBehaviour
 
     private void OnMouseDown()
     {
-        print("Rolling!");
+        //print("Rolling!");
         table.RollDice();
     }
     
