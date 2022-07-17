@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3830912054143571805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3830912054143571804}
+  - component: {fileID: 3830912054143571807}
+  m_Layer: 0
+  m_Name: MergeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3830912054143571804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830912054143571805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4922645, y: -0.27726606, z: -0.21730295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3830912054143571807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830912054143571805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf6bb0766778004796945d23cc63bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceFaces:
+  - {fileID: 11400000, guid: 547f5907a75cead4ab43aa82e25cefe9, type: 2}
+  - {fileID: 11400000, guid: a94ce0876bc5c924689d820111ecc1fb, type: 2}
+  - {fileID: 11400000, guid: c44f776f819ccce43ba931199e530bd2, type: 2}
+  - {fileID: 11400000, guid: 5ecc5fdfc2c46b04e8ee6ab44b8f9dc8, type: 2}
+  - {fileID: 11400000, guid: 74fbaf4f2826cc14788b2bc5182723dc, type: 2}
+  - {fileID: 11400000, guid: d9d040916fc57944d8b71ce60c63db8f, type: 2}
+  - {fileID: 11400000, guid: 5e0f9ef60fcde934ba8c9c7992462bd0, type: 2}
+  - {fileID: 11400000, guid: 53fb4164e0670864a80950f6fdda4fa0, type: 2}
+  - {fileID: 11400000, guid: 01b1a666c68b31c47843e3e895807f89, type: 2}
+  - {fileID: 11400000, guid: e28dc0ed43c18db4e92bc78e5d3d92ca, type: 2}
+  - {fileID: 11400000, guid: 8e39beb44cb4d1a43855dd6c10d3d5a3, type: 2}
+  - {fileID: 11400000, guid: de7f48dffa1a6604ebf520b040a7a4f9, type: 2}
+  - {fileID: 11400000, guid: 24b231dd35764ab4294a1a8a9fcf6dc1, type: 2}
+  mergeDiePrefab: {fileID: 9199476179364976348, guid: 782e7e30da56d3a40950337b56d17968, type: 3}
+  mergeParticles: {fileID: 113784319401270423, guid: 937af408730dbc34aa9d5d4b0b0851f9, type: 3}
