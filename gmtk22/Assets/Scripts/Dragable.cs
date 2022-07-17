@@ -18,7 +18,7 @@ public class Dragable : MonoBehaviour
 
    private void OnMouseDown()
    {
-      print("ONMOUSEDOWN!!!!!");
+      //print("ONMOUSEDOWN!!!!!");
       isHeld = true;
       mouseStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       spriteStart = this.transform.localPosition ;

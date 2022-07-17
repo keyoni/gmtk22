@@ -45,48 +45,72 @@ public class MergeManager : MonoBehaviour
             print("merging");
             lockMerge = true;   
             var mergePar =Instantiate(mergeParticles, positionNew, Quaternion.identity);
+            ParticleSystem par = mergePar.GetComponent<ParticleSystem>(); 
+            var mainModule = par.main;
+            par.Play();
             int currentVal = dice1Num + dice2Num;
             print(currentVal);
             if (mergeValues.TryGetValue(currentVal, out DiceFaceScriptiableObject mergedDice))
             {
+                mainModule.startColor = Color.blue;
+                par.Play();
                 Destroy(dice1);
                 Destroy(dice2);
                 //Spawn new dice - Maybe add a space for that to pop out of 
                 GameObject mergeDie = Instantiate(mergeDiePrefab,positionNew,Quaternion.identity);
                 mergeDie.GetComponent<Dice>().diceSides.Add(mergedDice);
                 mergeDie.GetComponent<Dice>().fromMerge = true;
+                mergeDie.SetActive(true);
                  Destroy(mergePar,1);
                 lockMerge = false;
                 return true;
             }
             else if (dice1Num < -100 || dice2Num < -100)
             {
+                mainModule.startColor = Color.yellow;
+                
                 //otherParticles
                 if (dice1Num > 0)
                 {
+                    par.Play();par.Play();
                     int ran = Random.Range(1, dice1Num - 1);
                    
                     GameObject dice1New = Instantiate(mergeDiePrefab, positionNew, Quaternion.identity);
                     dice1New.GetComponent<Dice>().diceSides.Add(mergeValues[ran]);
                     dice1New.GetComponent<Dice>().fromMerge = true;
-               
+                    dice1New.SetActive(true);
+                   
                     GameObject dice2New = Instantiate(mergeDiePrefab, positionNew, Quaternion.identity);
-                    dice1New.GetComponent<Dice>().diceSides.Add(mergeValues[dice1Num - ran]);
-                    dice1New.GetComponent<Dice>().fromMerge = true;
+                    dice2New.GetComponent<Dice>().diceSides.Add(mergeValues[dice1Num - ran]);
+                    dice2New.GetComponent<Dice>().fromMerge = true;
+                    dice2New.SetActive(true);
+                    Destroy(mergePar,1);
+                    lockMerge = false;
+                    return true;
+                    
                 }
-                else
+                else 
                 {
+                    par.Play();
                     int ran = Random.Range(1, dice2Num - 1);
                     GameObject dice1New = Instantiate(mergeDiePrefab, positionNew, Quaternion.identity);
                     dice1New.GetComponent<Dice>().diceSides.Add(mergeValues[ran]);
                     dice1New.GetComponent<Dice>().fromMerge = true;
                
                     GameObject dice2New = Instantiate(mergeDiePrefab, pos.position, Quaternion.identity);
-                    dice1New.GetComponent<Dice>().diceSides.Add(mergeValues[dice2Num - ran]);
-                    dice1New.GetComponent<Dice>().fromMerge = true;
+                    dice2New.GetComponent<Dice>().diceSides.Add(mergeValues[dice2Num - ran]);
+                    dice2New.GetComponent<Dice>().fromMerge = true;
+                    Destroy(mergePar,1);
+                    lockMerge = false;
+                    return true;
                 }
                 
             }
+            
+            
+            mainModule.startColor = Color.red;
+            par.Play();
+            Destroy(mergePar,1);
 
             lockMerge = false;
             
@@ -96,5 +120,3 @@ public class MergeManager : MonoBehaviour
     }
 
 }
-// Update is called once per frame
-

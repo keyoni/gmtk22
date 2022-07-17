@@ -47,7 +47,7 @@ public class ProblemCard : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Dice"))
         {
-            col.GetComponent<Dice>().setLocked(true);
+            col.GetComponent<Dice>().SetLocked(true);
             currentValue += col.GetComponent<Dice>().finalSide;
             currentNumber++;
         }
@@ -60,7 +60,7 @@ public class ProblemCard : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Dice"))
         {
-            other.GetComponent<Dice>().setLocked(false);
+            other.GetComponent<Dice>().SetLocked(false);
             currentValue -= other.GetComponent<Dice>().finalSide;
             currentNumber--;
         }

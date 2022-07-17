@@ -35,7 +35,11 @@ public class Dice : MonoBehaviour {
         {
             locked.SetActive(true);
         }
-        Roll();
+        else
+        {
+            Roll();
+        }
+        
     }
 
     private void Update()
@@ -98,7 +102,7 @@ public class Dice : MonoBehaviour {
         {
             isOverDie = true;
             //Particles happen here
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             if (isOverDie)
             {
                 //print("Still Working");
@@ -121,7 +125,7 @@ public class Dice : MonoBehaviour {
         isOverDie = false;
     }
 
-    public void setLocked(bool locking)
+    public void SetLocked(bool locking)
     {
       locked.SetActive(locking);
     }
