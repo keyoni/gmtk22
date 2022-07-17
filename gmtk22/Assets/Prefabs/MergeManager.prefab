@@ -59,3 +59,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de7f48dffa1a6604ebf520b040a7a4f9, type: 2}
   - {fileID: 11400000, guid: 24b231dd35764ab4294a1a8a9fcf6dc1, type: 2}
   mergeDiePrefab: {fileID: 9199476179364976348, guid: 782e7e30da56d3a40950337b56d17968, type: 3}
+  mergeParticles: {fileID: 113784319401270423, guid: 937af408730dbc34aa9d5d4b0b0851f9, type: 3}

@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     private void Score()
     {
-        score = (int) timeUp;
+        score += (int) timeUp;
         scoreText.text = score.ToString("00");
         print($"Score: {score}");
         timeUp = 0;

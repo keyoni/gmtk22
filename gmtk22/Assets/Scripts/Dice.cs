@@ -21,6 +21,8 @@ public class Dice : MonoBehaviour {
     private bool mouseHover;
 
     private GameObject currentlyCol;
+
+    [SerializeField] private GameObject locked;
 	// Use this for initialization
 	private void Start ()
     {
@@ -29,7 +31,10 @@ public class Dice : MonoBehaviour {
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
         //print($" {diceSides[0].value} ");
-        
+        if (fromMerge)
+        {
+            locked.SetActive(true);
+        }
         Roll();
     }
 
@@ -114,6 +119,11 @@ public class Dice : MonoBehaviour {
     {
         //Particles Disappears here
         isOverDie = false;
+    }
+
+    public void setLocked(bool locking)
+    {
+      locked.SetActive(locking);
     }
 }
 

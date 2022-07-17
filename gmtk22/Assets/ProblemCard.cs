@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ProblemCard : MonoBehaviour
@@ -26,6 +27,7 @@ public class ProblemCard : MonoBehaviour
         winningNumber = children.Count;
     }
 
+    //check of childwen dice numbwers reset
 
     private IEnumerator GetNewValue()
     {
@@ -45,6 +47,7 @@ public class ProblemCard : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Dice"))
         {
+            col.GetComponent<Dice>().setLocked(true);
             currentValue += col.GetComponent<Dice>().finalSide;
             currentNumber++;
         }
@@ -57,6 +60,7 @@ public class ProblemCard : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Dice"))
         {
+            other.GetComponent<Dice>().setLocked(false);
             currentValue -= other.GetComponent<Dice>().finalSide;
             currentNumber--;
         }
@@ -73,10 +77,9 @@ public class ProblemCard : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             if (winningValue == currentValue)
             {
-                print("WINNER!!!"); 
-                GetNewProblemCard();
+                print("WINNER!!!");
                 ProblemSolved?.Invoke();
-               
+                GetNewProblemCard();
             }
         }
         else  if(currentNumber> winningNumber)
@@ -89,11 +92,14 @@ public class ProblemCard : MonoBehaviour
         
         currentNumber = 0;
         currentValue = 0;
-        
+        print("Old NUM: "+children[0].finalSide);
         foreach (Dice die in children)
         {
             die.Roll();
         }
+
+        winningValue = 0;
+        print("New NUM: "+children[0].finalSide);
         //Do a Action event
         StartCoroutine("GetNewValue");
         
