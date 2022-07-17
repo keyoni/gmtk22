@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        //Dice.DiceRolling += PlayDieShuffle;
         print(_audioSource);
     }
 
