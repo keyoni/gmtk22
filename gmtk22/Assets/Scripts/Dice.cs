@@ -26,7 +26,7 @@ public class Dice : MonoBehaviour
     [SerializeField] private GameObject locked;
 
     private AudioManager _audioManager;
-
+    public static event Action DiceRolling;
     // Use this for initialization
     private void Start()
     {
@@ -36,7 +36,7 @@ public class Dice : MonoBehaviour
         print(_audioManager);
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
-        //print($" {diceSides[0].value} ");
+        print($" Dice Side: {diceSides[0].value} ");
         if (fromMerge)
         {
             locked.SetActive(true);
@@ -58,7 +58,7 @@ public class Dice : MonoBehaviour
     // If you left click over the dice then RollTheDice coroutine is started
     public void Roll()
     {
-        StartCoroutine("RollTheDice");
+        StartCoroutine(nameof(RollTheDice));
     }
 
     private void OnMouseEnter()
@@ -77,11 +77,8 @@ public class Dice : MonoBehaviour
         // Variable to contain random dice side number.
         // It needs to be assigned. Let it be 0 initially
         var randomDiceSide = 0;
-        //
-        if (CompareTag("Dice"))
-        {
-           _audioManager.PlayDieShuffle();
-        }
+        
+       //DiceRolling?.Invoke();
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.

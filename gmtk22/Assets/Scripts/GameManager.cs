@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         ProblemCard.ProblemSolved += Score;
         ProblemCard.ProblemSolved += ResetDie;
-        
+        Instantiate(dicePrefab);
     }
     
     void Update()
