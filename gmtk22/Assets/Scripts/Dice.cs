@@ -18,12 +18,13 @@ public class Dice : MonoBehaviour {
     public int finalSide = 0;
 
     private bool isOverDie;
+    private bool mouseHover;
 
     private GameObject currentlyCol;
 	// Use this for initialization
 	private void Start ()
     {
-    print(fromMerge);
+   // print(fromMerge);
         _mergeManager = FindObjectOfType<MergeManager>();
         // Assign Renderer component
         rend = GetComponent<SpriteRenderer>();
@@ -31,11 +32,29 @@ public class Dice : MonoBehaviour {
         
         Roll();
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1) && mouseHover)
+        {
+             Roll();
+        }
+    }
+
     // If you left click over the dice then RollTheDice coroutine is started
     public void Roll()
     {
-        StartCoroutine("RollTheDice");
+       StartCoroutine("RollTheDice");
+    }
+
+    private void OnMouseEnter()
+    {
+        mouseHover = true;
+    }
+
+    private void OnMouseExit()
+    {
+        mouseHover = false;
     }
 
     // Coroutine that rolls the dice
@@ -65,7 +84,7 @@ public class Dice : MonoBehaviour {
         finalSide = diceSides[randomDiceSide].numValue;
 
         // Show final dice value in Console
-        Debug.Log(finalSide);
+    //    Debug.Log(finalSide);
     }
     
     IEnumerator  OnTriggerEnter2D(Collider2D col)
@@ -77,15 +96,15 @@ public class Dice : MonoBehaviour {
             yield return new WaitForSeconds(2f);
             if (isOverDie)
             {
-                print("Still Working");
-                bool merged = _mergeManager.MergeNumbers(finalSide, col.GetComponent<Dice>().finalSide);
-                print($"Merged = {merged}");
-                if (merged)
-                {
-                    //Play animation
-                    Destroy(col.gameObject, 1);
-                    Destroy(this.gameObject, 1);
-                }
+                //print("Still Working");
+               _mergeManager.MergeNumbers(gameObject, col.gameObject, this.transform);
+                //print($"Merged = {merged}");
+                // if (merged)
+                // {
+                //     //Play animation
+                //     Destroy(col.gameObject);
+                //     Destroy(this.gameObject);
+                // }
             }
         }
 

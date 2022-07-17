@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winningValue: 0
+  currentValue: 0
+  winningNumber: 0
   currentNumber: 0
 --- !u!1001 &759429425231940743
 PrefabInstance:
@@ -201,7 +203,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Problem Color Die
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 607817016769190534, guid: e7ba9b4d37bd57443b735e83b9d6e0b3, type: 3}
+    - {fileID: 1167559317475084729, guid: e7ba9b4d37bd57443b735e83b9d6e0b3, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ba9b4d37bd57443b735e83b9d6e0b3, type: 3}
 --- !u!4 &208695359446898188 stripped
@@ -277,7 +281,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Problem Standard Die
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8179901093039984174, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
+    - {fileID: 5965340598438118871, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
 --- !u!4 &6847380451269817655 stripped
@@ -353,7 +359,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Problem Standard Die (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8179901093039984174, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
+    - {fileID: 5965340598438118871, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 53b9febb99b05914bbb9a9127e36fa93, type: 3}
 --- !u!4 &3480697160466932833 stripped

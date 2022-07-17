@@ -8,7 +8,7 @@ public class ProblemCard : MonoBehaviour
 
     private List<Dice> children;
     [SerializeField]  private int winningValue;
-    private int currentValue;
+   [SerializeField] private int currentValue;
     [SerializeField] private int winningNumber;
     [SerializeField] private int currentNumber;
 
@@ -57,7 +57,7 @@ public class ProblemCard : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Dice"))
         {
-            currentValue += other.GetComponent<Dice>().finalSide;
+            currentValue -= other.GetComponent<Dice>().finalSide;
             currentNumber--;
         }
 
@@ -73,9 +73,10 @@ public class ProblemCard : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             if (winningValue == currentValue)
             {
-                print("WINNER!!!");
-                ProblemSolved?.Invoke();
+                print("WINNER!!!"); 
                 GetNewProblemCard();
+                ProblemSolved?.Invoke();
+               
             }
         }
         else  if(currentNumber> winningNumber)
@@ -85,14 +86,17 @@ public class ProblemCard : MonoBehaviour
 
     private void GetNewProblemCard()
     {
+        
+        currentNumber = 0;
+        currentValue = 0;
+        
         foreach (Dice die in children)
         {
             die.Roll();
         }
         //Do a Action event
         StartCoroutine("GetNewValue");
-        currentNumber = 0;
-        currentValue = 0;
+        
         
     }
 

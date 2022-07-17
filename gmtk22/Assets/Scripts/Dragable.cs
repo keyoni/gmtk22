@@ -12,18 +12,20 @@ public class Dragable : MonoBehaviour
    private Vector3 spriteStart;
    public bool isHeld = false;
 
-   private bool isOverDie = false;
+   //private bool isOverDie = false;
    //public event Action Released;
    
 
    private void OnMouseDown()
-   { 
+   {
+      print("ONMOUSEDOWN!!!!!");
       isHeld = true;
       mouseStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       spriteStart = this.transform.localPosition ;
       
         
       }
+   
 
    private void OnMouseDrag()
    {
